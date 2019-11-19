@@ -14,11 +14,11 @@ const orderSummary = (props) => {
     return (
         <Aux>
             <h3>Order Summary</h3>
-            <p>You have the following ingredients on your burger</p>
+                <p>You have the following ingredients on your burger</p>
             <ul>
                 {ingredientSummary}
             </ul>
-            <p>Continue to Checkout?</p>
+                <p>Continue to Checkout?</p>
         </Aux>
     );
 };
