@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Aux from '../../hoc/Auxll';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/Burger/BuildControls/BuildControls';
+import Modal from '../../Components/UI/Modal/Modal';
+import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -11,10 +13,6 @@ const INGREDIENT_PRICES = {
 }
 
 class BurgerBuilder extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state={...}
-    // }
 
     state = {
         ingredients: {
@@ -27,7 +25,7 @@ class BurgerBuilder extends Component {
         purchasable: false
     }
 
-
+    // Updates the price of the burger
     updatePurchaseState (ingredients) {
         const sum = Object.keys(ingredients)
             .map(igKey => {
@@ -38,7 +36,9 @@ class BurgerBuilder extends Component {
             }, 0);
             this.setState({purchasable: sum > 0})
     };
+    // --------------------------------------------------------------
 
+    // Allows user to click the more button to add ingredient
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
@@ -52,7 +52,9 @@ class BurgerBuilder extends Component {
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
         this.updatePurchaseState(updatedIngredients);
     };
+    // --------------------------------------------------------------
 
+     // Allows user to click the less button to remove ingredient
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         if(oldCount <= 0) {
@@ -69,6 +71,7 @@ class BurgerBuilder extends Component {
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
         this.updatePurchaseState(updatedIngredients);
     }
+    // --------------------------------------------------------------
 
     render () {
         const disabledInfo = {
@@ -79,7 +82,12 @@ class BurgerBuilder extends Component {
         }
         return (
             <Aux>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients}/>
+                </Modal>
+                {/* goes to the Burger.js file */}
                 <Burger ingredients={this.state.ingredients}/>
+                {/* goes to the BurgerControls.js file */}
                 <BuildControls 
                 ingredientAdded={this.addIngredientHandler}
                 ingredientRemoved={this.removeIngredientHandler}

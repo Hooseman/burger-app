@@ -10,7 +10,7 @@ const burger = (props) => {
             return <BurgerIngredient key={igKey + i} type={igKey}/>
         });
     })
-    // takes an array and turns into another
+    // takes transformedIngredients array and turns into a fat array
     .reduce((arr,el) => {
         return arr.concat(el)
     }, [] );
