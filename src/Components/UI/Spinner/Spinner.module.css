@@ -1,11 +1,11 @@
 .loader {
-    font-size: 10px;
+    font-size: 10px;;
     margin: 50px auto;
     text-indent: -9999em;
     width: 11em;
     height: 11em;
     border-radius: 50%;
-    background: #000000;
+    background: #7a7474;
     background: -moz-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
     background: -webkit-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
     background: -o-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
